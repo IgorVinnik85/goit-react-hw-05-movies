@@ -1,11 +1,18 @@
-import React from 'react';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Movies from 'pages/Movies';
 import Layout from 'Layout/Layout';
-import { Trending } from 'pages/Trending';
-import MovieDetails from 'pages/MovieDetails';
-import Cast from './Cast/Cast';
-import Reviews from './Reviews/Reviews';
+
+const Movies = lazy(() => import('../pages/Movies'));
+const Trending = lazy(() => import('../pages/Trending'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
+
+// import Movies from 'pages/Movies';
+// import Trending from 'pages/Trending';
+// import MovieDetails from 'pages/MovieDetails';
+// import Cast from './Cast/Cast';
+// import Reviews from './Reviews/Reviews';
 
 const App = () => {
   return (

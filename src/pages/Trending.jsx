@@ -2,7 +2,7 @@ import { trendingMovies } from 'api/api';
 import  TrendingItem  from 'components/TrendingItem/TrendingItem';
 import { useEffect, useState } from 'react';
 
-export const Trending = () => {
+ const Trending = () => {
     const [trendingArr, setTrendingArr] = useState([]);
   useEffect(() => {
    trendingMovies()
@@ -18,4 +18,6 @@ export const Trending = () => {
       })}</ul>
     </div>
   );
-};
+ };
+
+ export default Trending;
