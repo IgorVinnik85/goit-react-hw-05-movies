@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { serchMovie } from 'api/api';
 import SearchList from 'components/SearchList/SearchList';
+import { Input, Btn } from './Movies.styled';
 
 const Movies = () => {
   const [searchName, setSearchName] = useState('');
@@ -34,7 +35,7 @@ const Movies = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input
+        <Input
           type="text"
           autoComplete="off"
           autoFocus
@@ -42,7 +43,7 @@ const Movies = () => {
           value={inputValue}
           onChange={handleChange}
         />
-        <button type="submit">Search</button>
+        <Btn type="submit">Search</Btn>
       </form>
       {showList && <SearchList list={movieData} />}
     </>

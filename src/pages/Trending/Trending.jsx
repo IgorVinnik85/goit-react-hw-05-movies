@@ -1,6 +1,7 @@
 import { trendingMovies } from 'api/api';
 import  TrendingItem  from 'components/TrendingItem/TrendingItem';
 import { useEffect, useState } from 'react';
+import { Title, Wrapper, Ul } from './Trending.styled';
 
  const Trending = () => {
     const [trendingArr, setTrendingArr] = useState([]);
@@ -11,12 +12,21 @@ import { useEffect, useState } from 'react';
   }, []);
 
   return (
-    <div>
-      <h2>Trending today</h2>
-      <ul>{trendingArr.map( ({id, title}) => {
-        return <TrendingItem key={id} trandingTitle={title} movieId={id} />;
-      })}</ul>
-    </div>
+    <Wrapper>
+      <Title>Trending today</Title>
+      <Ul>
+        {trendingArr.map(({ id, title, poster_path }) => {
+          return (
+            <TrendingItem
+              key={id}
+              trandingTitle={title}
+              movieId={id}
+              poster={poster_path}
+            />
+          );
+        })}
+      </Ul>
+    </Wrapper>
   );
  };
 

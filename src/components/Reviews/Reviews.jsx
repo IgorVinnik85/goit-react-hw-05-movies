@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { reviews } from 'api/api';
 import { useParams } from 'react-router-dom';
+import { Li } from './Reviews.styled';
 
 const Reviews = () => {
   const [detailsData, setDetailsData] = useState(null);
@@ -29,10 +30,10 @@ const Reviews = () => {
           <ul>
             {detailsData.map(({ author, content, id }) => {
               return (
-                <li onClick={() => showText(id)} key={id}>
-                  <h2>{author}</h2>
+                <Li onClick={() => showText(id)} key={id}>
+                  <h2>{`-${author}`}</h2>
                   {activeReviewId === id && <p>{content}</p>}
-                </li>
+                </Li>
               );
             })}
           </ul>
