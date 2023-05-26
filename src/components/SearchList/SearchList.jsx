@@ -1,8 +1,12 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
-import { Ul, LinkList } from './SearchList.styled';
+import { Ul, LinkList,  } from './SearchList.styled';
 
 const SearchList = ({ list, loc }) => {
+  console.log(list.data.results);
+  if (list === null) {
+  return
+}
   const data = list.data.results;
 
   return (

@@ -9,7 +9,7 @@ const Movies = () => {
     const [searchName, setSearchName] = useSearchParams('')
   const [inputValue, setInputValue] = useState('');
   const [movieData, setMovieData] = useState(null);
-  const [showList, setShowList] = useState(false);
+  // const [showList, setShowList] = useState(false);
   const searchQueryy = searchName.get('querty');
   const locationMovie = useLocation()
   // console.log(searchQueryy);
@@ -32,9 +32,10 @@ const Movies = () => {
       return;
     }
     setSearchName({ querty: inputValue });
-    setShowList(true);
+    // setShowList(true);
     setInputValue('');
   };
+  console.log(movieData);
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -48,7 +49,7 @@ const Movies = () => {
         />
         <Btn type="submit">Search</Btn>
       </form>
-      {showList && <SearchList list={movieData} loc={locationMovie} />}
+      {movieData && <SearchList list={movieData} loc={locationMovie} />}
     </>
   );
 };
