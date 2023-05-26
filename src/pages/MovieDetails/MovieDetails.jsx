@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
   useParams,
-  Link,
   Outlet,
   useLocation,
   useNavigate,
