@@ -2,21 +2,24 @@ import { useEffect, useState } from 'react';
 import { serchMovie } from 'api/api';
 import SearchList from 'components/SearchList/SearchList';
 import { Input, Btn } from './Movies.styled';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
-  const [searchName, setSearchName] = useState('');
+  // const [searchName, setSearchName] = useState('');
+    const [searchName, setSearchName] = useSearchParams('')
   const [inputValue, setInputValue] = useState('');
   const [movieData, setMovieData] = useState(null);
   const [showList, setShowList] = useState(false);
-
+  const searchQueryy = searchName.get('querty');
+  const locationMovie = useLocation()
+  // console.log(searchQueryy);
   useEffect(() => {
-  
-    serchMovie(searchName)
+    serchMovie(searchQueryy)
       .then(res => {
         setMovieData(res);
       })
       .catch(err => console.log(err));
-  }, [searchName]);
+  }, [searchName, searchQueryy]);
 
   const handleChange = e => {
     setInputValue(e.target.value);
@@ -28,7 +31,7 @@ const Movies = () => {
       alert('Enter something!');
       return;
     }
-    setSearchName(inputValue);
+    setSearchName({ querty: inputValue });
     setShowList(true);
     setInputValue('');
   };
@@ -45,7 +48,7 @@ const Movies = () => {
         />
         <Btn type="submit">Search</Btn>
       </form>
-      {showList && <SearchList list={movieData} />}
+      {showList && <SearchList list={movieData} loc={locationMovie} />}
     </>
   );
 };

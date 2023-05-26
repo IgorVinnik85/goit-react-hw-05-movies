@@ -21,7 +21,7 @@ const MovieDetails = () => {
   const detailsId = Number(params.movieName);
   const locationDetails = useLocation();
   const navigate = useNavigate();
-  // console.log(Number(params.movieName));
+  // console.log(locationDetails.state.from);
 
   useEffect(() => {
     moviesDetails(detailsId)
@@ -33,7 +33,7 @@ const MovieDetails = () => {
   }, [detailsId]);
 
   const handleClickBack = () => {
-    navigate(locationDetails.state ?? '/movies');
+    navigate(locationDetails.state?.from ?? '/');
   };
 
   return (

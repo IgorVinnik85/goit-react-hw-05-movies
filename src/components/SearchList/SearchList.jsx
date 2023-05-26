@@ -2,17 +2,19 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import { Ul, LinkList } from './SearchList.styled';
 
-const SearchList = ({ list }) => {
+const SearchList = ({ list, loc }) => {
   const data = list.data.results;
 
   return (
     <Ul>
       {data.map(({ title, id }) => {
-          return (
-            <li key={id}>
-              <LinkList to={`${id}`}>{title}</LinkList>
-            </li>
-          );
+        return (
+          <li key={id}>
+            <LinkList to={`${id}`} state={{ from: loc }}>
+              {title}
+            </LinkList>
+          </li>
+        );
       })}
     </Ul>
   );
