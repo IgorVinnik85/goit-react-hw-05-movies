@@ -5,21 +5,21 @@ import { Input, Btn } from './Movies.styled';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
-  // const [searchName, setSearchName] = useState('');
-    const [searchName, setSearchName] = useSearchParams('')
+  const [searchName, setSearchName] = useSearchParams('');
   const [inputValue, setInputValue] = useState('');
   const [movieData, setMovieData] = useState(null);
-  // const [showList, setShowList] = useState(false);
   const searchQueryy = searchName.get('querty');
-  const locationMovie = useLocation()
-  // console.log(searchQueryy);
+  const locationMovie = useLocation();
+
   useEffect(() => {
-    serchMovie(searchQueryy)
-      .then(res => {
-        setMovieData(res);
-      })
-      .catch(err => console.log(err));
-  }, [searchName, searchQueryy]);
+    if (searchQueryy) {
+      serchMovie(searchQueryy)
+        .then(res => {
+          setMovieData(res);
+        })
+        .catch(err => console.log(err));
+    }
+  }, [searchQueryy]);
 
   const handleChange = e => {
     setInputValue(e.target.value);
@@ -32,10 +32,10 @@ const Movies = () => {
       return;
     }
     setSearchName({ querty: inputValue });
-    // setShowList(true);
+
     setInputValue('');
   };
-  console.log(movieData);
+
   return (
     <>
       <form onSubmit={handleSubmit}>

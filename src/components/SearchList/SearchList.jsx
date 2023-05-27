@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
 import { Ul, LinkList,  } from './SearchList.styled';
 
 const SearchList = ({ list, loc }) => {
-  console.log(list.data.results);
+  // console.log(loc);
   if (list === null) {
   return
 }
@@ -25,3 +26,8 @@ const SearchList = ({ list, loc }) => {
 };
 
 export default SearchList;
+
+SearchList.propTypes = {
+  list: PropTypes.object.isRequired,
+  loc: PropTypes.object.isRequired,
+};

@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import {
-  useParams,
-  Outlet,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom';
+import React, { useEffect, useState, useRef } from 'react';
+import { useParams, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { moviesDetails } from 'api/api';
 import {
   Btn,
@@ -21,6 +16,7 @@ const MovieDetails = () => {
   const detailsId = Number(params.movieName);
   const locationDetails = useLocation();
   const navigate = useNavigate();
+  const backLinkLocationRef = useRef(locationDetails.state?.from ?? '/');
   // console.log(locationDetails.state.from);
 
   useEffect(() => {
@@ -33,7 +29,7 @@ const MovieDetails = () => {
   }, [detailsId]);
 
   const handleClickBack = () => {
-    navigate(locationDetails.state?.from ?? '/');
+    navigate(backLinkLocationRef.current);
   };
 
   return (

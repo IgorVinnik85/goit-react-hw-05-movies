@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {  useLocation } from 'react-router-dom';
 import { Img, LinkTitle, Li } from './TrendingItem.styled';
 
@@ -21,3 +22,9 @@ const TrendingItem = ({ trandingTitle, movieId, poster }) => {
 };
 
 export default TrendingItem;
+
+TrendingItem.propTypes = {
+  trandingTitle: PropTypes.string.isRequired,
+  movieId: PropTypes.number.isRequired,
+  poster: PropTypes.string.isRequired,
+};

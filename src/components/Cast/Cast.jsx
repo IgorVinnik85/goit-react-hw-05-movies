@@ -17,10 +17,11 @@ const Cast = () => {
       })
       .catch(err => console.log(err));
   }, [detailsId]);
+  // console.log(detailsData);
 
   return (
     <>
-      {detailsData && (
+      {detailsData && detailsData.length > 0 ? (
         <>
           <Ul>
             {detailsData.map(
@@ -40,6 +41,8 @@ const Cast = () => {
             )}
           </Ul>
         </>
+      ) : (
+        <div>We don't have any cast for this movie.</div>
       )}
     </>
   );

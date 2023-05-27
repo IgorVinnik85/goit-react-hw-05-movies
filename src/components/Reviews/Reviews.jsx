@@ -5,7 +5,7 @@ import { Li } from './Reviews.styled';
 
 const Reviews = () => {
   const [detailsData, setDetailsData] = useState(null);
- const [activeReviewId, setActiveReviewId] = useState(null);
+  const [activeReviewId, setActiveReviewId] = useState(null);
   const params = useParams();
   const detailsId = Number(params.movieName);
 
@@ -19,13 +19,13 @@ const Reviews = () => {
   }, [detailsId]);
 
   const showText = id => {
-    console.log(id)
+    console.log(id);
     setActiveReviewId(id === activeReviewId ? null : id);
   };
-
+  // console.log(detailsData);
   return (
     <>
-      {detailsData && (
+      {detailsData && detailsData.length > 0 ? (
         <>
           <ul>
             {detailsData.map(({ author, content, id }) => {
@@ -38,6 +38,8 @@ const Reviews = () => {
             })}
           </ul>
         </>
+      ) : (
+        <div>We don't have any rewiews for this movie.</div>
       )}
     </>
   );
