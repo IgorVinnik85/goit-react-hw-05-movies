@@ -50,3 +50,12 @@ export const reviews = async id => {
   );
 };
 
+export const fileredGenres = arr => {
+  const filtredIdName = arr
+    .map(el => {
+      return el.name;
+    })
+    .join(', ');
+
+  return filtredIdName;
+};

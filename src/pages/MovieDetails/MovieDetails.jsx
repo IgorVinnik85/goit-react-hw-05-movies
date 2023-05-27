@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { moviesDetails } from 'api/api';
+import { moviesDetails, fileredGenres } from 'api/api';
 import {
   Btn,
   Wrapper,
@@ -9,6 +9,7 @@ import {
   LinkAdditional,
   Img,
 } from './MovieDetails.styled';
+
 
 const MovieDetails = () => {
   const [detailsData, setDetailsData] = useState(null);
@@ -31,7 +32,7 @@ const MovieDetails = () => {
   const handleClickBack = () => {
     navigate(backLinkLocationRef.current);
   };
-
+  // console.log(detailsData.genres);
   return (
     <Wrapper>
       {detailsData && (
@@ -51,7 +52,7 @@ const MovieDetails = () => {
               <h3>Overview</h3>
               <p>{detailsData.overview}</p>
               <h4>Genres</h4>
-              <p>{[]}</p>
+              <p>{fileredGenres(detailsData.genres)}</p>
               <span>Additional information:</span>
               <ul>
                 <li>
